@@ -2,7 +2,24 @@ import os
 import numpy as np
 from typing import List
 
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+
 try:
+    import openai
+    if OPENAI_API_KEY:
+        openai.api_key = OPENAI_API_KEY
+except Exception:  # pragma: no cover - optional
+    openai = None
+
+try:
+    from sentence_transformers import SentenceTransformer
+    _model = (
+        SentenceTransformer('all-MiniLM-L6-v2')
+        if not OPENAI_API_KEY or openai is None
+        else None
+    )
+except Exception:  # pragma: no cover - optional
+=======
     import openai  # type: ignore
 except Exception:  # pragma: no cover - optional
     openai = None
