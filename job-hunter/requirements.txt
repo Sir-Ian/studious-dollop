@@ -1,0 +1,5 @@
+requests
+python-dotenv       # secrets
+tqdm                # progress bar
+APScheduler         # simple cron
+slack_sdk           # posting alerts
