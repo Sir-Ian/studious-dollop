@@ -9,7 +9,7 @@ This project scrapes job boards (Greenhouse, Lever and Ashby) and stores roles i
    ```bash
    pip install -r job-hunter/requirements.txt
    ```
-3. Copy `job-hunter/.env` and edit values for your use:
+3. Copy `job-hunter/.env.example` to `job-hunter/.env` and edit values:
    - `KEYWORDS` – comma separated keywords used for simple matching
    - `MIN_SALARY` – discard jobs below this salary floor
    - `RELEVANCE_THRESHOLD` – cosine similarity threshold
@@ -19,6 +19,8 @@ This project scrapes job boards (Greenhouse, Lever and Ashby) and stores roles i
    - `OPENAI_API_KEY` – required for OpenAI embeddings
    - `CRAWL_HOURS` – number of hours to loop the crawler (0 to run once)
    - `CRAWL_INTERVAL` – seconds to wait between crawl iterations
+=======
+  - `OPENAI_API_KEY` – optional key for OpenAI embeddings
 
 ## Usage
 
@@ -37,7 +39,7 @@ View results in a browser:
 streamlit run dashboard.py
 ```
 
-Generate a tailored résumé for a job id:
+Generate a tailored résumé for a job id (falls back to your unmodified résumé if OpenAI isn't configured):
 ```bash
 python resume_tailer.py <job_id> out.docx
 ```
