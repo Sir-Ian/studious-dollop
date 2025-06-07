@@ -9,7 +9,8 @@ This project scrapes job boards (Greenhouse, Lever and Ashby) and stores roles i
    ```bash
    pip install -r job-hunter/requirements.txt
    ```
-3. Copy `job-hunter/.env.example` to `job-hunter/.env` and edit values:
+   - `OPENAI_API_KEY` – optional OpenAI key for remote embeddings
+     - If not set, a local transformer model is used and a ~100MB download will occur on first run
    - `KEYWORDS` – comma separated keywords used for simple matching
    - `MIN_SALARY` – discard jobs below this salary floor
    - `RELEVANCE_THRESHOLD` – cosine similarity threshold
