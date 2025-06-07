@@ -1,6 +1,8 @@
 import os
 import sqlite3
-from datetime import datetime
+from datetime import datetime, timedelta
+import time
+import argparse
 
 from dotenv import load_dotenv
 from slack_sdk.webhook import WebhookClient
@@ -20,6 +22,8 @@ LEVER_SLUGS = [c.strip() for c in os.getenv("LEVER_SLUGS", "").split(",") if c.s
 ASHBY_SLUGS = [c.strip() for c in os.getenv("ASHBY_SLUGS", "").split(",") if c.strip()]
 RESUME_FILE = os.getenv("RESUME_FILE", "resume.txt")
 SLACK_WEBHOOK = os.getenv("SLACK_WEBHOOK")
+CRAWL_HOURS = float(os.getenv("CRAWL_HOURS", 0))
+CRAWL_INTERVAL = int(os.getenv("CRAWL_INTERVAL", 600))  # seconds between crawls
 
 RESUME_EMB = embed_text(open(RESUME_FILE).read()) if os.path.exists(RESUME_FILE) else None
 
@@ -127,5 +131,38 @@ def crawl_once():
     conn.close()
 
 
+def crawl_loop(hours: float, interval: int) -> None:
+    """Continuously crawl for ``hours`` hours, sleeping ``interval`` seconds
+    between iterations. A value of 0 for ``hours`` runs indefinitely.
+    """
+    deadline = None if hours <= 0 else datetime.now() + timedelta(hours=hours)
+    iteration = 1
+    while True:
+        print(f"\n[INFO] Crawl iteration {iteration}")
+        crawl_once()
+        iteration += 1
+        if deadline and datetime.now() >= deadline:
+            break
+        time.sleep(max(1, interval))
+
+
 if __name__ == "__main__":
-    crawl_once()
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--duration",
+        type=float,
+        default=CRAWL_HOURS,
+        help="run for the given number of hours (0 = run once)",
+    )
+    parser.add_argument(
+        "--interval",
+        type=int,
+        default=CRAWL_INTERVAL,
+        help="seconds between iterations when running in a loop",
+    )
+    args = parser.parse_args()
+
+    if args.duration and args.duration > 0:
+        crawl_loop(args.duration, args.interval)
+    else:
+        crawl_once()

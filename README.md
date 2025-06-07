@@ -17,12 +17,19 @@ This project scrapes job boards (Greenhouse, Lever and Ashby) and stores roles i
    - `RESUME_FILE` – path to your resume text
    - `SLACK_WEBHOOK` – optional Slack incoming webhook URL
    - `OPENAI_API_KEY` – required for OpenAI embeddings
+   - `CRAWL_HOURS` – number of hours to loop the crawler (0 to run once)
+   - `CRAWL_INTERVAL` – seconds to wait between crawl iterations
 
 ## Usage
 
-Run the crawler:
+Run the crawler once:
 ```bash
 python job-hunter/scraper.py
+```
+
+Loop the crawler for a given duration:
+```bash
+python job-hunter/scraper.py --duration 8 --interval 600
 ```
 
 View results in a browser:
