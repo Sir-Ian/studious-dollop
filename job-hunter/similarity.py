@@ -19,7 +19,21 @@ try:
         else None
     )
 except Exception:  # pragma: no cover - optional
+=======
+    import openai  # type: ignore
+except Exception:  # pragma: no cover - optional
+    openai = None
+
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+if openai and OPENAI_API_KEY:
+    openai.api_key = OPENAI_API_KEY
     _model = None
+else:
+    try:
+        from sentence_transformers import SentenceTransformer
+        _model = SentenceTransformer("all-MiniLM-L6-v2")
+    except Exception:  # pragma: no cover - optional
+        _model = None
 
 
 def embed_text(text: str) -> List[float]:
