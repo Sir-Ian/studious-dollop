@@ -1,0 +1,33 @@
+name: Crawl
+
+on:
+  schedule:
+    - cron: '0 3 * * *'
+  workflow_dispatch:
+
+jobs:
+  crawl:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - name: Install deps
+        run: |
+          pip install -r job-hunter/requirements.txt
+      - name: Run scraper
+        env:
+          KEYWORDS: ${{ secrets.KEYWORDS }}
+          MIN_SALARY: ${{ secrets.MIN_SALARY }}
+          RELEVANCE_THRESHOLD: ${{ secrets.RELEVANCE_THRESHOLD }}
+          GREENHOUSE_SLUGS: ${{ secrets.GREENHOUSE_SLUGS }}
+          LEVER_SLUGS: ${{ secrets.LEVER_SLUGS }}
+          ASHBY_SLUGS: ${{ secrets.ASHBY_SLUGS }}
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: python job-hunter/scraper.py
+      - uses: actions/upload-artifact@v3
+        with:
+          name: jobs
+          path: jobs.db

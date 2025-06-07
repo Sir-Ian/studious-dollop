@@ -1,0 +1,6 @@
+# Runtime data
+jobs.db
+__pycache__/
+.env
+*.log
+job-hunter/.env
