@@ -27,8 +27,10 @@ python job-hunter/scraper.py
 
 View results in a browser:
 ```bash
-streamlit run dashboard.py
+python -m streamlit run dashboard.py
 ```
+If `pip` installed the packages in user mode and `streamlit` is not on your
+`PATH`, using `python -m` ensures the module is found.
 
 Generate a tailored résumé for a job id:
 ```bash
