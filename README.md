@@ -16,10 +16,12 @@ This project scrapes job boards (Greenhouse, Lever and Ashby) and stores roles i
    - `GREENHOUSE_SLUGS`, `LEVER_SLUGS`, `ASHBY_SLUGS` – board identifiers
    - `RESUME_FILE` – path to your resume text
    - `SLACK_WEBHOOK` – optional Slack incoming webhook URL
+   - `OPENAI_API_KEY` – optional OpenAI key for remote embeddings
+   - `CRAWL_HOURS` – number of hours to loop the crawler (0 to run once)
+   - `CRAWL_INTERVAL` – seconds to wait between crawl iterations
    - `OPENAI_API_KEY` – required for OpenAI embeddings
    - `CRAWL_HOURS` – number of hours to loop the crawler (0 to run once)
    - `CRAWL_INTERVAL` – seconds to wait between crawl iterations
-=======
   - `OPENAI_API_KEY` – optional key for OpenAI embeddings
 
 ## Usage
