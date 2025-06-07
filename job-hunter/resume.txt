@@ -1,0 +1,40 @@
+PROFESSIONAL SUMMARY 
+Analytical and results-oriented professional skilled in Python, machine learning, AI-driven analytics, automation, and database solutions. Quick learner with a proven track record of translating complex issues into scalable solutions. 
+TECHNICAL SKILLS
+•	Programming: Python (Advanced), SQL (Intermediate), JavaScript, Git, XML
+•	Machine Learning/AI: PyTorch, Scikit-learn, K-means, DBSCAN, GPT Models (OpenAI), Text Embeddings
+•	Automation: Robotic Process Automation (RPA), OCR, SuiteScript (NetSuite), Zapier
+•	Databases & Storage: Neo4j (Proficient), AWS Neptune (Basic), SQL Server, Azure Data Lake
+•	Visualization & Analytics: Python (Matplotlib, Seaborn, Plotly), Pandas (Advanced), PowerBI, Excel 
+•	ERP / CRM & SaaS: Oracle NetSuite, OneStream, Celigo, Gorgias, Magento
+•	Cloud & APIs: Azure (Functions, ADF), AWS (Basic), REST/GraphQL API design & consumption (Postman, Swagger/OpenAPI), Azure Data Lake pipelines, CI/CD (GitHub Actions)  
+EDUCATION
+Goizueta Business School, Emory University 						         Atlanta, GA
+Bachelor of Business Administration  Major(s): Finance & Org. Strategy, Minor: Entrepreneurship        (May 2023)
+Emory University & Oxford College							         Atlanta, GA
+Associate of Arts 										          (May 2021)
+ 
+PROFESSIONAL EXPERIENCE
+EY, Consulting Firm 									         Chicago, IL	
+Technical Consultant								      (2022, 2024 – Present)
+•	Sole developer for OneStream ↔ Azure Data Lake integration: designed, built, and deployed public-API pipelines, evaluated alternative approaches, and surfaced critical architectural flaws averting costly rework.
+•	Automated OneStream config via Python-generated XML, reducing effort 55 %+ and eliminating outsourcing.
+•	Developed a Neo4j graph database leveraging federal datasets for relational mapping across payment platforms; created an interactive Streamlit dashboard demonstrating functionality & analytics, ensuring stakeholder buy-in. 
+•	Created compliant Python-based automated note-taking tool leveraging GPT models (alternative to Copilot), reducing processing from 1.5 hrs to 30 mins per interview, enabling 160 interviews vs. 60 planned.
+•	Conducted comprehensive statistical analyses in Python on internal team data and client survey results, uncovering key correlations and actionable insights presented directly to senior leadership.
+Cognos Solution LLC / Robert Half 							    Cleveland, OH
+Contractor Consultant	      							      (Jun 2023 – Jan 2024)
+•	Led the migration from a manually managed Outlook inbox (hundreds of daily emails) to Gorgias, automating email routing using AI-driven tagging, significantly reducing managerial workload by 72 %.
+•	Engineered a NLP-based clustering solution using OpenAI embeddings, Python, and HDBSCAN to analyze 40,000 customer service interactions, accurately identifying top questions enabling AI-driven customer service automation, saving over $150K annually in staffing and training costs.
+•	Developed a Python-based real estate model analyzing historical customer order data to identify and recommend five new physical retail locations, directly informing major investment decisions.
+•	Implemented OCR-based RPA solutions to eliminate manual data entry, accelerating operational workflows.
+•	Automated Oracle NetSuite payment processing using SuiteScript, reducing a 20-hour weekly task to real-time.
+ 
+LEADERSHIP & COMMUNITY INVOLVEMENT
+AI Center of Excellence (COE) – Team Member 						 (2024 – Present)
+•	Contributed to internal initiatives demonstrating Generative AI capabilities, improving leadership understanding and market positioning.
+The Hatchery @ Emory University – Creative Consultant 				    (Aug 2022 – May 2023)
+•	Developed and launched the Student Innovator Program, enhancing student engagement and alumni network 
+ 
+INTERESTS
+AI, Audiobooks, Architecture, Everything Automotive, Mountain Biking, Space Exploration, Philosophy, Watches
