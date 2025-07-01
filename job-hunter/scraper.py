@@ -11,30 +11,15 @@ from tqdm import tqdm
 from fetchers import fetch_greenhouse, fetch_lever, fetch_ashby
 from similarity import embed_text, cosine_similarity
 
-load_dotenv()
-
-DB_PATH = "jobs.db"
-KEYWORDS = [k.strip().lower() for k in os.getenv("KEYWORDS", "").split(",") if k.strip()]
-MIN_SALARY = int(os.getenv("MIN_SALARY", 150000))
-RELEVANCE_THRESHOLD = float(os.getenv("RELEVANCE_THRESHOLD", 0.75))
-GREENHOUSE_SLUGS = [c.strip() for c in os.getenv("GREENHOUSE_SLUGS", "").split(",") if c.strip()]
-LEVER_SLUGS = [c.strip() for c in os.getenv("LEVER_SLUGS", "").split(",") if c.strip()]
-ASHBY_SLUGS = [c.strip() for c in os.getenv("ASHBY_SLUGS", "").split(",") if c.strip()]
-RESUME_FILE = os.getenv("RESUME_FILE", "resume.txt")
-SLACK_WEBHOOK = os.getenv("SLACK_WEBHOOK")
-CRAWL_HOURS = float(os.getenv("CRAWL_HOURS", 0))
-CRAWL_INTERVAL = int(os.getenv("CRAWL_INTERVAL", 600))  # seconds between crawls
-
-RESUME_EMB = embed_text(open(RESUME_FILE).read()) if os.path.exists(RESUME_FILE) else None
-
-
-def keyword_match(job: dict) -> bool:
-    if not KEYWORDS:
-        return True
-    haystack = f"{job['title']} {job.get('content', '')}".lower()
-    return any(k in haystack for k in KEYWORDS)
-
-
+try:
+    from sentence_transformers import SentenceTransformer
+    _model = (
+        SentenceTransformer('all-MiniLM-L6-v2')
+        if not OPENAI_API_KEY or openai is None
+        else None
+    )
+except Exception:  # pragma: no cover - optional
+    _model = None
 def salary_from_ranges(ranges) -> tuple:
     if not ranges:
         return None, None
